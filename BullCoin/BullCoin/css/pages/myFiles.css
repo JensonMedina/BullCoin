@@ -1,0 +1,132 @@
+﻿.titulos h3 {
+    font-size: 1.3pc;
+    font-weight: 400;
+    line-height: 2pc;
+    letter-spacing: 1.7px;
+}
+
+.cotizaciones p {
+    font-size: 1.2pc;
+    letter-spacing: 1px;
+}
+
+.archivos-section {
+    padding: 30px;
+}
+
+.fecha {
+    font-size: 1.7pc;
+    font-weight: 500;
+    letter-spacing: 5px;
+    color: black;
+}
+
+.tarjetas-container {
+    display: grid;
+    /* grid-template-columns: repeat(4, 1fr); */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+}
+
+.tarjeta {
+    padding: 10px;
+    max-width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 0.5px solid rgba(179, 187, 198, 0.45);
+    box-shadow: 0px 0px 10px rgba(179, 187, 198, 0.45);
+    border-radius: 10px;
+}
+
+.tarjeta-header {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.tarjeta-img-container {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+    .tarjeta-img-container img {
+        width: 100%;
+        object-fit: cover;
+    }
+
+.title {
+    font-size: 1.5pc;
+}
+
+.tarjeta-body {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.item-tarjeta {
+    display: flex;
+    flex-direction: column;
+}
+
+    .item-tarjeta span {
+        font-size: 18px;
+    }
+
+.tarjeta-footer {
+    width: 100%;
+    height: 50px;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+    .btn-container button {
+        width: 100px;
+        height: 30px;
+        border: none;
+        border-radius: 15px;
+        background-color: red;
+        color: whitesmoke;
+        cursor: pointer;
+    }
+
+        .btn-container button:hover {
+            background-color: rgb(210, 67, 91);
+        }
+
+.bread-crumb-item-active::before {
+    content: ">";
+    padding: 0 8px;
+    color: #000;
+}
+
+@media screen and (max-width: 768px) {
+    .titulos h3 {
+        font-size: 1pc;
+        font-weight: 400;
+    }
+
+    .titulo-archivo h1 {
+        font-size: 2.5pc;
+    }
+
+    .cotizaciones p {
+        font-size: .8pc;
+        letter-spacing: 1px;
+    }
+
+    .fecha span {
+        font-size: .8pc;
+    }
+}
