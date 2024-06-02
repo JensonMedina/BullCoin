@@ -32,9 +32,9 @@
                         <div class="selector-monedas-container">
                             <div class="nombre-bandera">
                                 <div class="flag">
-                                    <img src="img/eur.svg" alt="" />
+                                    <asp:Image ID="flagImg" runat="server" />
                                 </div>
-                                <div class="nombre">Euro</div>
+                                <asp:Label ID="flagNombre" runat="server" Text="Todas" CssClass="nombre"></asp:Label>
                             </div>
                             <asp:DropDownList ID="selectorMoneda" runat="server" OnSelectedIndexChanged="selectorMoneda_SelectedIndexChanged" AutoPostBack="true">
                                 <asp:ListItem Value="-1">Seleccione una opción</asp:ListItem>
@@ -53,10 +53,12 @@
                             </asp:DropDownList>
                         </div>
                         <div class="fecha-hora">
-                            <p>Datos Actualizados al <span>15/04/2024 17:30hs</span></p>
+                            <p>Datos Actualizados al 
+                                <asp:Label ID="lblFecha" runat="server" Text=""></asp:Label>
+                            </p>
                         </div>
 
-                        <div class="monedas-container">
+                        <div class="monedas-container-grid">
                             <% 
 
                                 if (selectedCoin >= 1 && selectedCoin <= 7)
@@ -85,9 +87,8 @@
                                     </div>
                                     <div class="moneda-footer">
                                         <div class="favoritos">
-                                            <button class="btn-favorito">
-                                                Guardar
-                                            </button>
+                                            <asp:Button ID="btnGuardarFavorito" CssClass="btn-favorito" runat="server" Text="Guardar" OnClick="btnGuardarFavorito_Click"/>
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -120,9 +121,8 @@
                                     </div>
                                     <div class="moneda-footer">
                                         <div class="favoritos">
-                                            <button class="btn-favorito">
-                                                Guardar
-                                            </button>
+                                            <asp:Button ID="Button1" CssClass="btn-favorito" runat="server" Text="Guardar" OnClick="btnGuardarFavorito_Click"/>
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -155,9 +155,8 @@
                                     </div>
                                     <div class="moneda-footer">
                                         <div class="favoritos">
-                                            <button class="btn-favorito">
-                                                Guardar
-                                            </button>
+                                            <asp:Button ID="Button2" CssClass="btn-favorito" runat="server" Text="Guardar" OnClick="btnGuardarFavorito_Click" />
+                                            
                                         </div>
                                     </div>
                                 </div>
@@ -190,9 +189,8 @@
                                     </div>
                                     <div class="moneda-footer">
                                         <div class="favoritos">
-                                            <button class="btn-favorito">
-                                                Guardar
-                                            </button>
+                                            <asp:Button ID="Button3" CssClass="btn-favorito" runat="server" Text="Guardar" OnClick="btnGuardarFavorito_Click" />
+                                           
                                         </div>
                                     </div>
                                 </div>
@@ -225,16 +223,15 @@
                                     </div>
                                     <div class="moneda-footer">
                                         <div class="favoritos">
-                                            <button class="btn-favorito">
-                                                Guardar
-                                            </button>
+                                            <asp:Button ID="Button4" CssClass="btn-favorito" runat="server" Text="Guardar" OnClick="btnGuardarFavorito_Click" />
+                                            
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <%
                                 }
-                                else if (selectedCoin == 0)
+                                else
                                 {
                             %>            <%foreach (Domain.Currency cur in ListCurrencies)
                                               {
@@ -286,9 +283,8 @@
                                     </div>
                                     <div class="moneda-footer">
                                         <div class="favoritos">
-                                            <button class="btn-favorito">
-                                                Guardar
-                                            </button>
+                                            <asp:Button ID="Button5" CssClass="btn-favorito" runat="server" Text="Guardar" OnClick="btnGuardarFavorito_Click" />
+                                           
                                         </div>
                                     </div>
                                 </div>
