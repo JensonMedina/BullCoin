@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using System.Web.UI;
 using Domain;
 using Data;
+using System.Web.UI.WebControls;
 
 namespace BullCoin
 {
@@ -29,13 +30,17 @@ namespace BullCoin
                 }
             }
 
+
         }
         private async void GetCurrencies()
         {
             ListCurrencies = await currenciesController.GetAllCurrencies();
             //despues de cargar la lista aprovecho para cargar la hora, para eso uso como ejemplo la hora de actualizacion de la primer moneda
-            
-            lblFecha.Text = DateTime.Parse(ListCurrencies[0].fechaActualizacion).ToString("dd/MM/yyyy");
+
+            lblFecha.Text = ListCurrencies[0].fechaActualizacion.ToString("dd/MM/yyyy");
+
+            rptCurrencies.DataSource = ListCurrencies;
+            rptCurrencies.DataBind();
         }
 
         protected void selectorMoneda_SelectedIndexChanged(object sender, EventArgs e)
@@ -43,9 +48,9 @@ namespace BullCoin
 
             selectedCoin = int.Parse(selectorMoneda.SelectedValue);
             DataBind();
-            if(selectedCoin > 0)
+            if (selectedCoin > 0)
             {
-                lblFecha.Text = DateTime.Parse(ListCurrencies[selectedCoin - 1].fechaActualizacion).ToString("dd/MM/yyyy");
+                lblFecha.Text = ListCurrencies[selectedCoin - 1].fechaActualizacion.ToString("dd/MM/yyyy");
                 flagNombre.Text = ListCurrencies[selectedCoin - 1].moneda;
                 if (selectedCoin < 8)
                 {
@@ -77,14 +82,48 @@ namespace BullCoin
                 flagImg.ImageUrl = "img/noun-world.svg";
                 flagNombre.Text = "Todas";
             }
-            
-            
-           
+
+
+
         }
 
         protected void btnGuardarFavorito_Click(object sender, EventArgs e)
         {
-
+            Button clickedButton = (Button)sender;
+            int selectedIndex = int.Parse(clickedButton.CommandArgument);
+            Currency selectedCurrency = ListCurrencies[selectedIndex];
+            selectedCurrency.bandera = GetFlagImage(selectedCurrency.moneda);
+            SaveFavorites(selectedCurrency);
+        }
+        private void SaveFavorites(Currency selected)
+        {
+            CurrencyData data = new CurrencyData();
+            try
+            {
+                data.SaveCurrency(selected);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+        protected string GetFlagImage(string currencyCode)
+        {
+            switch (currencyCode)
+            {
+                case "USD":
+                    return "usd.svg";
+                case "EUR":
+                    return "eur.svg";
+                case "BRL":
+                    return "brl.svg";
+                case "CLP":
+                    return "clp.svg";
+                case "UYU":
+                    return "uyu.svg";
+                default:
+                    return "";
+            }
         }
     }
 

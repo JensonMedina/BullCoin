@@ -13,7 +13,10 @@
 .archivos-section {
     padding: 30px;
 }
-
+.fecha-monedas {
+    display: grid;
+    grid-template-rows: repeat(auto-fill, minmax(30px, 1fr));
+}
 .fecha {
     font-size: 1.7pc;
     font-weight: 500;
@@ -21,9 +24,8 @@
     color: black;
 }
 
-.tarjetas-container {
+.tarjetas {
     display: grid;
-    /* grid-template-columns: repeat(4, 1fr); */
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 10px;
 }
@@ -91,7 +93,7 @@
     width: 100%;
 }
 
-    .btn-container button {
+    .btn-Eliminar {
         width: 100px;
         height: 30px;
         border: none;
@@ -101,7 +103,7 @@
         cursor: pointer;
     }
 
-        .btn-container button:hover {
+        .btn-Eliminar:hover {
             background-color: rgb(210, 67, 91);
         }
 

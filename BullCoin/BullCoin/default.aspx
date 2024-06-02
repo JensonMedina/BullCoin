@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/myMaster.Master" AutoEventWireup="true" CodeBehind="default.aspx.cs" Inherits="BullCoin._default" Async="true" %>
+﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/myMaster.Master" AutoEventWireup="true" CodeBehind="default.aspx.cs" Inherits="BullCoin._default" Async="true"  EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="css/pages/default.css" rel="stylesheet" />
@@ -53,7 +53,8 @@
                             </asp:DropDownList>
                         </div>
                         <div class="fecha-hora">
-                            <p>Datos Actualizados al 
+                            <p>
+                                Datos Actualizados al 
                                 <asp:Label ID="lblFecha" runat="server" Text=""></asp:Label>
                             </p>
                         </div>
@@ -87,8 +88,8 @@
                                     </div>
                                     <div class="moneda-footer">
                                         <div class="favoritos">
-                                            <asp:Button ID="btnGuardarFavorito" CssClass="btn-favorito" runat="server" Text="Guardar" OnClick="btnGuardarFavorito_Click"/>
-                                            
+                                            <asp:Button ID="btnGuardarFavorito" CssClass="btn-favorito" runat="server" Text="Guardar" OnClick="btnGuardarFavorito_Click" CommandArgument="<%# selectedCoin - 1 %>" />
+
                                         </div>
                                     </div>
                                 </div>
@@ -121,8 +122,8 @@
                                     </div>
                                     <div class="moneda-footer">
                                         <div class="favoritos">
-                                            <asp:Button ID="Button1" CssClass="btn-favorito" runat="server" Text="Guardar" OnClick="btnGuardarFavorito_Click"/>
-                                           
+                                            <asp:Button ID="Button1" CssClass="btn-favorito" runat="server" Text="Guardar" OnClick="btnGuardarFavorito_Click" CommandArgument="<%# selectedCoin - 1 %>" />
+
                                         </div>
                                     </div>
                                 </div>
@@ -155,8 +156,8 @@
                                     </div>
                                     <div class="moneda-footer">
                                         <div class="favoritos">
-                                            <asp:Button ID="Button2" CssClass="btn-favorito" runat="server" Text="Guardar" OnClick="btnGuardarFavorito_Click" />
-                                            
+                                            <asp:Button ID="Button2" CssClass="btn-favorito" runat="server" Text="Guardar" OnClick="btnGuardarFavorito_Click" CommandArgument="<%# selectedCoin - 1 %>" />
+
                                         </div>
                                     </div>
                                 </div>
@@ -189,8 +190,8 @@
                                     </div>
                                     <div class="moneda-footer">
                                         <div class="favoritos">
-                                            <asp:Button ID="Button3" CssClass="btn-favorito" runat="server" Text="Guardar" OnClick="btnGuardarFavorito_Click" />
-                                           
+                                            <asp:Button ID="Button3" CssClass="btn-favorito" runat="server" Text="Guardar" OnClick="btnGuardarFavorito_Click" CommandArgument="<%# selectedCoin - 1 %>" />
+
                                         </div>
                                     </div>
                                 </div>
@@ -223,8 +224,8 @@
                                     </div>
                                     <div class="moneda-footer">
                                         <div class="favoritos">
-                                            <asp:Button ID="Button4" CssClass="btn-favorito" runat="server" Text="Guardar" OnClick="btnGuardarFavorito_Click" />
-                                            
+                                            <asp:Button ID="Button4" CssClass="btn-favorito" runat="server" Text="Guardar" OnClick="btnGuardarFavorito_Click" CommandArgument="<%# selectedCoin - 1 %>" />
+
                                         </div>
                                     </div>
                                 </div>
@@ -233,64 +234,41 @@
                                 }
                                 else
                                 {
-                            %>            <%foreach (Domain.Currency cur in ListCurrencies)
-                                              {
-                            %><div class="moneda-container">
-                                <div class="moneda-card">
-                                    <div class="moneda-title">
-                                        <div class="flag-container">
-                                            <%switch (cur.moneda)
-                                                {
-                                                    case "USD":
-                                            %><img src="img/usd.svg" alt="dolar" /><%
-                                                                                           break;
-
-                                                                                       case "EUR":
-                                            %><img src="img/eur.svg" alt="euro" /><%
-                                                                                          break;
-
-                                                                                      case "BRL":
-                                            %><img src="img/brl.svg" alt="real brasilero" /><%
-                                                                                                    break;
-
-                                                                                                case "CLP":
-                                            %><img src="img/clp.svg" alt="peso chileno" /><%
-                                                                                                  break;
-
-                                                                                              case "UYU":
-                                            %><img src="img/uyu.svg" alt="peso uruguayo" /><%
-                                                                                                   break;
-
-
-
-                                                                                               } %>
-                                        </div>
-                                        <h4><%:cur.moneda + " " + cur.nombre%></h4>
-                                    </div>
-                                    <div class="moneda-body">
-                                        <div class="moneda-compra">
-                                            <div class="compra">
-                                                <h5>COMPRA</h5>
-                                                <span>$<%:cur.compra%></span>
+                            %>
+                            <asp:Repeater ID="rptCurrencies" runat="server">
+                                <ItemTemplate>
+                                    <div class="moneda-container">
+                                        <div class="moneda-card">
+                                            <div class="moneda-title">
+                                                <div class="flag-container">
+                                                    <img src="img/<%# GetFlagImage(Eval("moneda").ToString()) %>" alt="" />
+                                                </div>
+                                                <h4><%# Eval("moneda") + " " + Eval("nombre") %></h4>
                                             </div>
-                                        </div>
-                                        <div class="moneda-venta">
-                                            <div class="venta">
-                                                <h5>VENTA</h5>
-                                                <span>$<%:cur.venta%></span>
+                                            <div class="moneda-body">
+                                                <div class="moneda-compra">
+                                                    <div class="compra">
+                                                        <h5>COMPRA</h5>
+                                                        <span>$<%# Eval("compra") %></span>
+                                                    </div>
+                                                </div>
+                                                <div class="moneda-venta">
+                                                    <div class="venta">
+                                                        <h5>VENTA</h5>
+                                                        <span>$<%# Eval("venta") %></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="moneda-footer">
+                                                <div class="favoritos">
+                                                    <asp:Button ID="btnGuardarFavorito" CssClass="btn-favorito" runat="server" Text="Guardar" OnClick="btnGuardarFavorito_Click" CommandArgument='<%# Container.ItemIndex %>' />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="moneda-footer">
-                                        <div class="favoritos">
-                                            <asp:Button ID="Button5" CssClass="btn-favorito" runat="server" Text="Guardar" OnClick="btnGuardarFavorito_Click" />
-                                           
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <% }
+                                </ItemTemplate>
+                            </asp:Repeater>
+                            <%
                                 }
                             %>
                         </div>
