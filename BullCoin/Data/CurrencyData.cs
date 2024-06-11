@@ -74,6 +74,27 @@ namespace Data
             }
 
         }
+
+        public void DeleteCurrency(int Id)
+        {
+            DataAccess data = new DataAccess();
+            try
+            {
+                string query = "delete from cotizacionesGuardadas where id = @id";
+                data.SetQuery(query);
+                data.SetParameters("@id", Id);
+                data.ExecuteAction();
+
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error en el metodo eliminar cotizacion: " + ex.Message);
+            }
+            finally
+            {
+                data.CloseConnection();
+            }
+        }
     }
 
 }

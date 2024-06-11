@@ -28,68 +28,45 @@
                 </section>
                 <section class="archivos-section">
                     <div class="container">
-                        <div class="fecha-monedas">
-                            <% 
-                                string currentFecha = null;
-                                if (Currencies.Count > 0)
-                                {
-                                    foreach (var currency in Currencies)
-                                    {
-                                        if (currentFecha != currency.fechaActualizacion.ToShortDateString())
-                                        {
-                                            if (currentFecha != null)
-                                            {
-                            %>
-                        </div>
-                        <!-- Cierre del div .tarjetas anterior -->
-                        <%
-                            }
-                            currentFecha = currency.fechaActualizacion.ToShortDateString();
-                        %><div class="fecha">
-                            <%: currency.fechaActualizacion.ToShortDateString() %>
-                        </div>
-                        <div class="tarjetas">
-                            <%
-                                }
-                            %><div class="tarjeta">
-                                <div class="tarjeta-header">
-                                    <div class="tarjeta-img-container">
-                                        <img src="img/<%: currency.bandera %>" alt="" />
-                                    </div>
-                                    <div class="title"><%: currency.nombre %></div>
+                        <asp:Repeater ID="rptFechas" runat="server">
+                            <ItemTemplate>
+                                <div class="fecha"><%# Convert.ToDateTime(Eval("Fecha")).ToString("d MMMM yyyy") %></div>
+                                <div class="tarjetas-container">
+                                    <asp:Repeater ID="rptCurrencies" runat="server" DataSource='<%# Eval("Currencies") %>'>
+                                        <ItemTemplate>
+                                            <asp:HiddenField ID="hnfId" runat="server" Value='<%# Eval("id") %>' />
+                                            <div class="tarjeta">
+                                                <div class="tarjeta-header">
+                                                    <div class="tarjeta-img-container">
+                                                        <img src="img/<%# Eval("bandera") %>" alt="" />
+                                                    </div>
+                                                    <div class="title"><%# Eval("moneda") + " " +  Eval("nombre") %></div>
+                                                </div>
+                                                <div class="tarjeta-body">
+                                                    <div class="compra item-tarjeta">
+                                                        <span>Compra</span>
+                                                        <span>$<%# Eval("compra") %></span>
+                                                    </div>
+                                                    <div class="venta item-tarjeta">
+                                                        <span>Venta</span>
+                                                        <span>$<%# Eval("venta") %></span>
+                                                    </div>
+                                                </div>
+                                                <div class="tarjeta-footer">
+                                                    <div class="btn-container">
+                                                        <asp:Button ID="btnEliminar" CssClass="btn-Eliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
                                 </div>
-                                <div class="tarjeta-body">
-                                    <div class="compra item-tarjeta">
-                                        <span>Compra</span>
-                                        <span>$<%: currency.compra %></span>
-                                    </div>
-                                    <div class="venta item-tarjeta">
-                                        <span>Venta</span>
-                                        <span>$<%: currency.venta %></span>
-                                    </div>
-                                </div>
-                                <div class="tarjeta-footer">
-                                    <div class="btn-container">
-                                        <asp:Button ID="Button1" CssClass="btn-Eliminar" runat="server" Text="Eliminar" />
-                                    </div>
-                                </div>
-                            </div>
-                            <% 
-                                    }
-                                }
-                                else
-                                {
-                            %><div>No hay cotizaciones guardadas.</div>
-                            <%
-                                }
-
-                            %>
-                        </div>
-                        <!-- Cierre del ultimo div .tarjetas -->
+                            </ItemTemplate>
+                        </asp:Repeater>
                     </div>
-
                 </section>
             </div>
         </main>
     </div>
 </asp:Content>
+
