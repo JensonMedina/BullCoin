@@ -1,22 +1,18 @@
-﻿.titulos h3 {
-    font-size: 1.3pc;
-    font-weight: 400;
-    line-height: 2pc;
-    letter-spacing: 1.7px;
+﻿.aviso {
+    color: #333; /* Color del texto */
+    font-size: 2.5rem; /* Tamaño del texto */
+    font-weight: bold; /* Negrita */
+    text-align: center; /* Centrado del texto */
+    padding: 20px; /* Espacio alrededor del texto */
+    border: 2px solid #333; /* Borde alrededor del texto */
+    border-radius: 10px; /* Esquinas redondeadas */
+    background-color: #fff; /* Fondo blanco para el texto */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil para el texto */
 }
 
-.cotizaciones p {
-    font-size: 1.2pc;
-    letter-spacing: 1px;
-}
-
+/* seccion cotizaciones favoritas */
 .archivos-section {
     padding: 30px;
-}
-
-.fecha-monedas {
-    display: grid;
-    grid-template-rows: repeat(auto-fill, minmax(30px, 1fr));
 }
 
 .fecha {
@@ -27,7 +23,6 @@
 }
 
 .tarjetas-container {
-    margin: 20px 0;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 10px;
@@ -97,19 +92,21 @@
     width: 100%;
 }
 
-.btn-Eliminar {
-    width: 100px;
-    height: 30px;
-    border: none;
-    border-radius: 15px;
-    background-color: red;
-    color: whitesmoke;
-    cursor: pointer;
-}
-
-    .btn-Eliminar:hover {
-        background-color: rgb(210, 67, 91);
+    .btn-container .btn-eliminar {
+        width: 100px;
+        height: 30px;
+        border: none;
+        border-radius: 15px;
+        background-color: red;
+        color: whitesmoke;
+        cursor: pointer;
     }
+
+        .btn-container .btn-eliminar:hover {
+            background-color: rgb(210, 67, 91);
+        }
+
+/* seccion migas de pan */
 
 .bread-crumb-item-active::before {
     content: ">";
@@ -117,10 +114,7 @@
     color: #000;
 }
 
-.hide-element {
-    display: none;
-}
-
+/* medias querys */
 @media screen and (max-width: 768px) {
     .titulos h3 {
         font-size: 1pc;

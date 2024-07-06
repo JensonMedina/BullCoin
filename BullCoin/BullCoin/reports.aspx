@@ -4,7 +4,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
      <div class="page-container">
-      <main>
+      <main style="min-height: 100vh;">
         <div class="main">
           <section class="img-background-section">
             <div class="img-background" id="BackgroundDinamico">
@@ -17,298 +17,186 @@
           <section class="bread-crumb-section">
             <nav class="bread-crumb-container">
               <ol class="bread-crumb">
-                <li aria-current="page">
-                  Inicio
-                </li>
+                <li aria-current="page">Inicio</li>
                 <li class="bread-crumb-item-active" aria-current="page">
                   Informe
                 </li>
               </ol>
             </nav>
           </section>
+          <!-- Seccion informes -->
           <section class="informes-section">
             <div class="tablero-cotizaciones">
-              <div class="grafico-selector">
-                <div class="selector-monedas-container">
-                  <div class="nombre-bandera">
-                    <div class="flag">
+              <div class="selector-monedas-container">
+                <div class="nombre-bandera" id="nombre-bandera">
+                  <div class="flag">
+                    <img src="img/noun-world-2699516.svg" alt="" />
+                  </div>
+                  <div class="nombre">Todas</div>
+                </div>
+                <label for="">Seleccione una opción</label>
+                <div class="selector-moneda-btn-container">
+                  <button class="btn-selector-moneda" id="btn-selector-moneda">
+                    <div class="icono-selector">
+                      <i class="fa-solid fa-chevron-down"></i>
+                    </div>
+                  </button>
+                </div>
+              </div>
+              <div class="selector-container" id="selector-container">
+                <div class="selector-option-container" data-currency="0">
+                  <div class="selector-option">
+                    <div class="flag-img">
+                      <img src="img/noun-world-2699516.svg" alt="" />
+                    </div>
+                    <h4>Todas</h4>
+                  </div>
+                  <span><i class="fa-solid fa-check"></i></span>
+                </div>
+                <div class="selector-option-container" data-currency="1">
+                  <div class="selector-option">
+                    <div class="flag-img">
+                      <img src="img/usd.svg" alt="" />
+                    </div>
+                    <h4>Dólar Oficial</h4>
+                  </div>
+                  <span></span>
+                </div>
+                <div class="selector-option-container" data-currency="2">
+                  <div class="selector-option">
+                    <div class="flag-img">
+                      <img src="img/usd.svg" alt="" />
+                    </div>
+                    <h4>Dólar Blue</h4>
+                  </div>
+                  <span></span>
+                </div>
+                <div class="selector-option-container" data-currency="3">
+                  <div class="selector-option">
+                    <div class="flag-img">
+                      <img src="img/usd.svg" alt="" />
+                    </div>
+                    <h4>Dólar Bolsa</h4>
+                  </div>
+                  <span></span>
+                </div>
+                <div class="selector-option-container" data-currency="4">
+                  <div class="selector-option">
+                    <div class="flag-img">
+                      <img src="img/usd.svg" alt="" />
+                    </div>
+                    <h4>Dólar CCL</h4>
+                  </div>
+                  <span></span>
+                </div>
+
+                <div class="selector-option-container" data-currency="5">
+                  <div class="selector-option">
+                    <div class="flag-img">
+                      <img src="img/usd.svg" alt="" />
+                    </div>
+                    <h4>Dólar Mayorista</h4>
+                  </div>
+                  <span></span>
+                </div>
+                <div class="selector-option-container" data-currency="6">
+                  <div class="selector-option">
+                    <div class="flag-img">
+                      <img src="img/usd.svg" alt="" />
+                    </div>
+                    <h4>Dólar Cripto</h4>
+                  </div>
+                  <span></span>
+                </div>
+                <div class="selector-option-container" data-currency="7">
+                  <div class="selector-option">
+                    <div class="flag-img">
+                      <img src="img/usd.svg" alt="" />
+                    </div>
+                    <h4>Dólar Tarjeta</h4>
+                  </div>
+                  <span></span>
+                </div>
+                <div class="selector-option-container" data-currency="8">
+                  <div class="selector-option">
+                    <div class="flag-img">
                       <img src="img/eur.svg" alt="" />
                     </div>
-                    <div class="nombre">Euro</div>
+                    <h4>Eur</h4>
                   </div>
-                  <select name="selector-moneda" id="selcetor-moneda">
-                    <option value="0">Seleccione una opción</option>
-                    <option value="todas">Todas</option>
-                    <option value="oficial">Dólar oficial</option>
-                    <option value="blue">Dólar Blue</option>
-                    <option value="mep">Dólar Bolsa (MEP)</option>
-                    <option value="liqui">Dólar Contado con Liqui (CCL)</option>
-                    <option value="tarjeta">Dólar Tarjeta</option>
-                    <option value="mayorista">Dólar Mayorista</option>
-                    <option value="cripto">Dólar Cripto</option>
-                    <option value="euro">Euro</option>
-                    <option value="real">Real Brasileño</option>
-                    <option value="chile">Peso Chileno</option>
-                    <option value="uyu">Peso Uruguayo</option>
-                  </select>
-                  <!-- esto lo dejo comentado porque despues lo vamos a usar con js -->
-                  <!-- <input type="text" class="selector-moneda" value="Euro" />
-                  <div class="selector-moneda-btn-container">
-                    <button class="btn-selector-moneda">
-                      <div class="icono-selector">
-                        <i class="fa-solid fa-chevron-down"></i>
-                      </div>
-                    </button>
-                  </div> -->
+                  <span></span>
                 </div>
-                <div class="grafico-cotizacion">
-                  <!-- Gráfico  -->
-                  <h3>Informe</h3>
-                  <div class="img-grafico-container">
-                    <img src="img/grafico.jpg" alt="Gráfico de cotización" />
+                <div class="selector-option-container" data-currency="9">
+                  <div class="selector-option">
+                    <div class="flag-img">
+                      <img src="img/brl.svg" alt="" />
+                    </div>
+                    <h4>Real Brasileño</h4>
                   </div>
+                  <span></span>
+                </div>
+                <div class="selector-option-container" data-currency="10">
+                  <div class="selector-option">
+                    <div class="flag-img">
+                      <img src="img/clp.svg" alt="" />
+                    </div>
+                    <h4>Peso Chileno</h4>
+                  </div>
+                  <span></span>
+                </div>
+                <div class="selector-option-container" data-currency="11">
+                  <div class="selector-option">
+                    <div class="flag-img">
+                      <img src="img/uyu.svg" alt="" />
+                    </div>
+                    <h4>Peso Uruguayo</h4>
+                  </div>
+                  <span></span>
                 </div>
               </div>
-              <div class="compartir-info">
-                <a href="#">
-                  <i class="fa-solid fa-envelope"></i> Compartir Información
-                </a>
+              <div class="grafico-cotizacion">
+                <h3 class="titulo-informe">Informe</h3>
+                <div class="chart-container">
+                  <canvas id="cotizaciones-chart"></canvas>
+                </div>
               </div>
+
+              
+              <button id="link-compartir-info"><i class="fa-solid fa-envelope"></i> Compartir Información</button>
+              <!-- <div id="modal" class="modal">
+                <div class="modal-content">
+                  <span class="close-button">&times;</span>
+                  <h2>Compartir Información</h2>
+                  <form id="formularioCompartir">
+                    <label for="name">Nombre:</label>
+                    <input type="text" id="name" name="name" required />
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required />
+                    <div class="modal-buttons">
+                      <button type="button" class="close-button">Cerrar</button>
+                      <button type="submit">Enviar</button>
+                    </div>
+                  </form>
+                </div>
+              </div> -->
 
               <div class="datos-moneda">
                 <div class="tabla-cotizaciones">
-                  <div class="encabezado fila-cotizaciones">
-                    <div><h3>Moneda</h3></div>
-                    <div><h3>Fecha</h3></div>
-                    <div><h3>Compra</h3></div>
-                    <div><h3>Venta</h3></div>
-                    <div><h3>Variación</h3></div>
-                  </div>
-                  <div class="informe-cotizaciones">
-                    <div class="fila-tipo-moneda">
-                      <div class="flag-container"><img src="img/usd.svg" alt="bandera eeuu"></div>
-                      <span>Dólar Blue</span>
-                    </div>
-                    <div class="fila-datos">
-                      <div></div>
-                      <div class="fecha columna-datos">
-                        <ul>
-                          <li><p>15/04/2024</p></li>
-                          <li><p>15/04/2024</p></li>
-                          <li><p>15/04/2024</p></li>
-                          <li><p>15/04/2024</p></li>
-                          <li><p>15/04/2024</p></li>
-                        </ul>
-                      </div>
-  
-                      <div class="compra columna-datos">
-                        <ul>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                        </ul>
-                      </div>
-  
-                      <div class="venta columna-datos">
-                        <ul>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                        </ul>
-                      </div>
-  
-                      <div class="accion columna-datos">
-                        <ul>
-                          <li>
-                            <i class="fa-solid fa-arrow-up cambio-positivo"></i>
-                          </li>
-                          <li>
-                            <i class="fa-solid fa-arrow-down cambio-negativo"></i>
-                          </li>
-                          <li>
-                            <i class="fa-solid fa-arrow-up cambio-positivo"></i>
-                          </li>
-                          <li>
-                            <i class="fa-solid fa-arrow-up cambio-positivo"></i>
-                          </li>
-                          <li>
-                            <i class="fa-solid fa-arrow-up cambio-positivo"></i>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="fila-tipo-moneda">
-                      <div class="flag-container"><img src="img/eur.svg" alt="bandera eeuu"></div>
-                      <span>Euro</span>
-                    </div>
-                    <div class="fila-datos">
-                      <div></div>
-                      <div class="fecha columna-datos">
-                        <ul>
-                          <li><p>15/04/2024</p></li>
-                          <li><p>15/04/2024</p></li>
-                          <li><p>15/04/2024</p></li>
-                          <li><p>15/04/2024</p></li>
-                          <li><p>15/04/2024</p></li>
-                        </ul>
-                      </div>
-  
-                      <div class="compra columna-datos">
-                        <ul>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                        </ul>
-                      </div>
-  
-                      <div class="venta columna-datos">
-                        <ul>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                        </ul>
-                      </div>
-  
-                      <div class="accion columna-datos">
-                        <ul>
-                          <li>
-                            <i class="fa-solid fa-arrow-up cambio-positivo"></i>
-                          </li>
-                          <li>
-                            <i class="fa-solid fa-arrow-up cambio-positivo"></i>
-                          </li>
-                          <li>
-                            <i class="fa-solid fa-arrow-up cambio-positivo"></i>
-                          </li>
-                          <li>
-                            <i class="fa-solid fa-arrow-up cambio-positivo"></i>
-                          </li>
-                          <li>
-                            <i class="fa-solid fa-arrow-up cambio-positivo"></i>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="fila-tipo-moneda">
-                      <span>Dólar Blue</span>
-                    </div>
-                    <div class="fila-datos">
-                      <div></div>
-                      <div class="fecha columna-datos">
-                        <ul>
-                          <li><p>15/04/2024</p></li>
-                          <li><p>15/04/2024</p></li>
-                          <li><p>15/04/2024</p></li>
-                          <li><p>15/04/2024</p></li>
-                          <li><p>15/04/2024</p></li>
-                        </ul>
-                      </div>
-  
-                      <div class="compra columna-datos">
-                        <ul>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                        </ul>
-                      </div>
-  
-                      <div class="venta columna-datos">
-                        <ul>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                        </ul>
-                      </div>
-  
-                      <div class="accion columna-datos">
-                        <ul>
-                          <li>
-                            <i class="fa-solid fa-arrow-up cambio-positivo"></i>
-                          </li>
-                          <li>
-                            <i class="fa-solid fa-arrow-up cambio-positivo"></i>
-                          </li>
-                          <li>
-                            <i class="fa-solid fa-arrow-up cambio-positivo"></i>
-                          </li>
-                          <li>
-                            <i class="fa-solid fa-arrow-up cambio-positivo"></i>
-                          </li>
-                          <li>
-                            <i class="fa-solid fa-arrow-up cambio-positivo"></i>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div class="fila-tipo-moneda">
-                      <span>Dólar Blue</span>
-                    </div>
-                    <div class="fila-datos">
-                      <div></div>
-                      <div class="fecha columna-datos">
-                        <ul>
-                          <li><p>15/04/2024</p></li>
-                          <li><p>15/04/2024</p></li>
-                          <li><p>15/04/2024</p></li>
-                          <li><p>15/04/2024</p></li>
-                          <li><p>15/04/2024</p></li>
-                        </ul>
-                      </div>
-  
-                      <div class="compra columna-datos">
-                        <ul>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                        </ul>
-                      </div>
-  
-                      <div class="venta columna-datos">
-                        <ul>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                          <li><p>$1075</p></li>
-                        </ul>
-                      </div>
-  
-                      <div class="accion columna-datos">
-                        <ul>
-                          <li>
-                            <i class="fa-solid fa-arrow-up cambio-positivo"></i>
-                          </li>
-                          <li>
-                            <i class="fa-solid fa-arrow-up cambio-positivo"></i>
-                          </li>
-                          <li>
-                            <i class="fa-solid fa-arrow-up cambio-positivo"></i>
-                          </li>
-                          <li>
-                            <i class="fa-solid fa-arrow-up cambio-positivo"></i>
-                          </li>
-                          <li>
-                            <i class="fa-solid fa-arrow-up cambio-positivo"></i>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                  
+                  <table id="cotizaciones-table">
+                    <thead>
+                      <tr>
+                        <th>Moneda</th>
+                        <th>Fecha</th>
+                        <th>Compra</th>
+                        <th>Venta</th>
+                        <th>Variación</th>
+                      </tr>
+                    </thead>
+
+                    <tbody id="table-body">
+                      <!-- Las filas se generarán dinámicamente -->
+                    </tbody>
+                  </table>
                 </div>
               </div>
             </div>

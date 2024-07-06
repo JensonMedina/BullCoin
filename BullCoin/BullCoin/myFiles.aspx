@@ -54,7 +54,7 @@
                                                 </div>
                                                 <div class="tarjeta-footer">
                                                     <div class="btn-container">
-                                                        <asp:Button ID="btnEliminar" CssClass="btn-Eliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" />
+                                                        <asp:Button ID="btnEliminar" CssClass="btn-eliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" />
                                                     </div>
                                                 </div>
                                             </div>

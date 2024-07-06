@@ -2,6 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="css/pages/default.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-container">
@@ -59,7 +61,7 @@
                             </p>
                         </div>
 
-                        <div class="monedas-container-grid">
+                        <div class="monedas-container">
                             <% 
 
                                 if (selectedCoin >= 1 && selectedCoin <= 7)
@@ -284,60 +286,100 @@
                         </div>
                     </div>
                 </section>
-                <section class="comentarios-section">
-                    <h2>Comentarios</h2>
-                    <div class="comentarios-container">
-                        <div class="comentario">
-                            <div class="comentario-header">
-                                <img src="img/bullCoinIcono.jpg" alt="Imagen de Usuario" />
-                            </div>
-                            <div class="comentario-body">
-                                <h4>Nombre Usuario</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                    blanditiis maiores perferen
-                                </p>
-                            </div>
-                        </div>
-                        <div class="comentario">
-                            <div class="comentario-header">
-                                <img src="img/bullCoinIcono.jpg" alt="Imagen de Usuario" />
-                            </div>
-                            <div class="comentario-body">
-                                <h4>Nombre Usuario</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                    blanditiis maiores perferen
-                                </p>
-                            </div>
-                        </div>
-                        <div class="comentario">
-                            <div class="comentario-header">
-                                <img src="img/bullCoinIcono.jpg" alt="Imagen de Usuario" />
-                            </div>
-                            <div class="comentario-body">
-                                <h4>Nombre Usuario</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                    blanditiis maiores perferen
-                                </p>
-                            </div>
-                        </div>
-                        <div class="comentario">
-                            <div class="comentario-header">
-                                <img src="img/bullCoinIcono.jpg" alt="Imagen de Usuario" />
-                            </div>
-                            <div class="comentario-body">
-                                <h4>Nombre Usuario</h4>
-                                <p>
-                                    Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                    blanditiis maiores perferen
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <!-- Sección comentarios -->
+          <section class="comentarios-section">
+            <h2>Comentarios</h2>
+            <div class="slider-container">
+              <button class="button-comentarios prev">Prev</button>
+              <div class="slider">
+                <div class="card-comentarios">
+                  <img
+                    src="img/juan.jpg"
+                    alt="Foto de usuario"
+                  />
+                  <h3>Juan</h3>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi impedit illo ipsum. Cumque, laboriosam. Sint, suscipit, consectetur repudiandae est nulla itaque nostrum incidunt, enim excepturi maiores laboriosam natus fugiat hic.</p>
+                </div>
+                <div class="card-comentarios">
+                  <img
+                    src="img/Carrmen.jpg"
+                    alt="Foto de usuario"
+                  />
+                  <h3>Carmen</h3>
+                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad ipsam quos esse error vero fuga pariatur est odit, blanditiis ipsa iste incidunt culpa inventore similique ratione laborum laboriosam sapiente dolorum.</p>
+                </div>
+                <div class="card-comentarios">
+                  <img
+                    src="img/nicolas.jpg"
+                    alt="Foto de usuario"
+                  />
+                  <h3>Nicolas</h3>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi impedit illo ipsum. Cumque, laboriosam. Sint, suscipit, consectetur repudiandae est nulla itaque nostrum incidunt, enim excepturi maiores laboriosam natus fugiat hic.</p>
+                </div>
+                <div class="card-comentarios">
+                  <img
+                    src="img/maria.jpg"
+                    alt="Foto de usuario"
+                  />
+                  <h3>Maria</h3>
+                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad ipsam quos esse error vero fuga pariatur est odit, blanditiis ipsa iste incidunt culpa inventore similique ratione laborum laboriosam sapiente dolorum.</p>
+                </div>
+                <div class="card-comentarios">
+                  <img
+                    src="img/jesus.jpg"
+                    alt="Foto de usuario"
+                  />
+                  <h3>Jesus</h3>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi impedit illo ipsum. Cumque, laboriosam. Sint, suscipit, consectetur repudiandae est nulla itaque nostrum incidunt, enim excepturi maiores laboriosam natus fugiat hic.</p>
+                </div>
+                <div class="card-comentarios">
+                  <img
+                    src="img/gabriela.jpg"
+                    alt="Foto de usuario"
+                  />
+                  <h3>Gabriela</h3>
+                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad ipsam quos esse error vero fuga pariatur est odit, blanditiis ipsa iste incidunt culpa inventore similique ratione laborum laboriosam sapiente dolorum.</p>
+                </div>
+                <div class="card-comentarios">
+                  <img
+                    src="img/ricardo.jpg"
+                    alt="Foto de usuario"
+                  />
+                  <h3>Ricardo</h3>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi impedit illo ipsum. Cumque, laboriosam. Sint, suscipit, consectetur repudiandae est nulla itaque nostrum incidunt, enim excepturi maiores laboriosam natus fugiat hic.</p>
+                </div>
+                <div class="card-comentarios">
+                  <img
+                    src="img/luciana.jpg"
+                    alt="Foto de usuario"
+                  />
+                  <h3>Luciana</h3>
+                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad ipsam quos esse error vero fuga pariatur est odit, blanditiis ipsa iste incidunt culpa inventore similique ratione laborum laboriosam sapiente dolorum.</p>
+                </div>
+                <div class="card-comentarios">
+                  <img
+                    src="img/matias.jpg"
+                    alt="Foto de usuario"
+                  />
+                  <h3>Matias</h3>
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi impedit illo ipsum. Cumque, laboriosam. Sint, suscipit, consectetur repudiandae est nulla itaque nostrum incidunt, enim excepturi maiores laboriosam natus fugiat hic.</p>
+                </div>
+                <div class="card-comentarios">
+                  <img
+                    src="img/guadalupe.jpg"
+                    alt="Foto de usuario"
+                  />
+                  <h3>Guadalupe</h3>
+                  <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ad ipsam quos esse error vero fuga pariatur est odit, blanditiis ipsa iste incidunt culpa inventore similique ratione laborum laboriosam sapiente dolorum.</p>
+                </div>
+     
+              </div>
+              <button class="button-comentarios next">Next</button>
+            </div>
+          </section>
             </div>
         </main>
     </div>
+
+    <script src="js/pages/default.js"></script>
 </asp:Content>

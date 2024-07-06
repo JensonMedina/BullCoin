@@ -19,7 +19,8 @@ namespace BullCoin
             if (!IsPostBack)
             {
                 GetCurrencies();
-                flagImg.ImageUrl = "img/noun-world.svg";
+                flagImg.ImageUrl = "img/noun-world-2699516.svg";
+
             }
             else
             {
@@ -79,7 +80,7 @@ namespace BullCoin
             }
             else
             {
-                flagImg.ImageUrl = "img/noun-world.svg";
+                flagImg.ImageUrl = "img/noun-world-2699516.svg";
                 flagNombre.Text = "Todas";
             }
 
@@ -93,7 +94,21 @@ namespace BullCoin
             int selectedIndex = int.Parse(clickedButton.CommandArgument);
             Currency selectedCurrency = ListCurrencies[selectedIndex];
             selectedCurrency.bandera = GetFlagImage(selectedCurrency.moneda);
-            SaveFavorites(selectedCurrency);
+            if(!VerifyExistence(selectedCurrency))
+            {
+                SaveFavorites(selectedCurrency);
+                // Llama a una función JavaScript después de guardar la moneda
+                string script = "<script>showSuccessAlert();</script>"; // Nombre de tu función JavaScript
+                ClientScript.RegisterStartupScript(this.GetType(), "showSuccessAlert", script);
+            }
+            else
+            {
+                string script = "<script>showErrorAlert();</script>"; // Nombre de tu función JavaScript
+                ClientScript.RegisterStartupScript(this.GetType(), "showErrorAlert", script);
+            }
+            
+            
+
         }
         private void SaveFavorites(Currency selected)
         {
@@ -104,6 +119,24 @@ namespace BullCoin
             }
             catch (Exception)
             {
+                throw;
+            }
+        }
+        private bool VerifyExistence(Currency currency)
+        {
+            CurrencyData data = new CurrencyData();
+            try
+            {
+                if(data.VerifyExistence(currency))
+                {
+                    //ya existe la moneda
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception)
+            {
+
                 throw;
             }
         }

@@ -48,6 +48,45 @@ namespace Data
             }
         }
 
+        public bool VerifyExistence(Currency currency)
+        {
+            DataAccess data = new DataAccess();
+            try
+            {
+                string query = "select * from cotizacionesGuardadas where moneda = @moneda and casa = @casa and fechaActualizacion = @fechaActualizacion";
+                data.SetQuery(query);
+                data.SetParameters("@moneda", currency.moneda);
+                data.SetParameters("@casa", currency.casa);
+                data.SetParameters("@fechaActualizacion", ExtractDateWithoutTime(currency.fechaActualizacion));
+                data.ExecuteRead();
+
+                if (data.GetReader.Read())
+                {
+                    return true;
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                // Aquí puedes manejar la excepción de una manera más adecuada
+                // como por ejemplo, registrar el error en un log
+                throw new Exception("Error al verificar la existencia de la moneda.", ex);
+            }
+            finally
+            {
+                // Asegúrate de cerrar y limpiar recursos en el bloque finally
+                data.CloseConnection();
+            }
+        }
+        private DateTime ExtractDateWithoutTime(DateTime dateIso)
+        {
+
+            // Obtener solo la parte de la fecha
+            string dateOnly = dateIso.ToString("yyyy-MM-dd"); // Formato deseado para la fecha
+            
+
+            return DateTime.Parse(dateOnly).Date;
+        }
         public void SaveCurrency(Currency newCurrency)
         {
             DataAccess data = new DataAccess();
@@ -59,7 +98,7 @@ namespace Data
                 data.SetParameters("@nombre", newCurrency.nombre);
                 data.SetParameters("@compra", newCurrency.compra);
                 data.SetParameters("@venta", newCurrency.venta);
-                data.SetParameters("@fechaActualizacion", newCurrency.fechaActualizacion);
+                data.SetParameters("@fechaActualizacion", ExtractDateWithoutTime(newCurrency.fechaActualizacion));
                 data.SetParameters("@bandera", newCurrency.bandera);
 
                 data.ExecuteAction();

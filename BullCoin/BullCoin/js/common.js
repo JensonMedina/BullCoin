@@ -1,8 +1,11 @@
-﻿/**************************************************/
+﻿
+
+/**************************************************/
 /* Evento menu desplegable  */
 /**************************************************/
 let contador = 1;
 function eventoMenu() {
+    event.preventDefault();
     const menu = document.querySelector('#menu');
     const btnMnu = document.querySelector('#btnMnu');
     if (contador == 1) {

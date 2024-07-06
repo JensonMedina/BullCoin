@@ -1,4 +1,5 @@
-﻿input {
+﻿/* esto va en una hoja de css llamada contacto.css */
+input {
     width: 200px;
     height: 30px;
     outline: none;

@@ -4,7 +4,10 @@
 
 <html>
 <head runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/common.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -17,6 +20,7 @@
                 <div class="icono-container">
                     <a href="default.aspx">
                         <img src="img/bullCoinIcono.jpg" alt="" /></a>
+                    <h2>BullCoin</h2>
                 </div>
                 <ul>
                     <li>
@@ -33,7 +37,7 @@
                     </li>
                 </ul>
             </div>
-            <button class="btn-mnu" onclick="eventoMenu()" id="btnMnu">≡</button>`
+            <button class="btn-mnu" onclick="eventoMenu()" id="btnMnu">≡</button>
         </header>
 
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
@@ -44,15 +48,15 @@
                     <h3>INSTITUCIONAL</h3>
                     <ul class="lista-institucional">
                         <li class="lista-institucional-item">
-                            <a href="#">¿Quiénes Somos?</a>
+                            <a href="">¿Quiénes Somos?</a>
                         </li>
                         <li class="lista-institucional-item">
-                            <a href="#">Socios Estratégicos</a>
+                            <a href="">Socios Estratégicos</a>
                         </li>
                         <li class="lista-institucional-item">
-                            <a href="#">Trabaje con Nosotros</a>
+                            <a href="">Trabaje con Nosotros</a>
                         </li>
-                        <li class="lista-institucional-item"><a href="#">Ayuda</a></li>
+                        <li class="lista-institucional-item"><a href="">Ayuda</a></li>
                     </ul>
                 </div>
                 <div class="accesos-container item-footer">
