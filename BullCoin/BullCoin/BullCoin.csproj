@@ -115,7 +115,9 @@
     <Content Include="img\usd.svg" />
     <Content Include="img\uyu.svg" />
     <Content Include="js\common.js" />
+    <Content Include="js\pages\contact.js" />
     <Content Include="js\pages\default.js" />
+    <Content Include="js\pages\myFiles.js" />
     <Content Include="myFiles.aspx" />
     <Content Include="reports.aspx" />
     <Content Include="Web.config" />

@@ -2,6 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="css/pages/myFiles.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-container">
@@ -54,7 +55,8 @@
                                                 </div>
                                                 <div class="tarjeta-footer">
                                                     <div class="btn-container">
-                                                        <asp:Button ID="btnEliminar" CssClass="btn-eliminar" runat="server" Text="Eliminar" OnClick="btnEliminar_Click" />
+                                                        <asp:Button ID="btnConfirmarEliminacion" runat="server" Text="Confirmar Eliminación" OnClick="btnEliminar_Click" style="display:none" />
+                                                        <button class="btn-eliminar" onclick="eliminarCotizacion(this)">Eliminar</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -68,5 +70,6 @@
             </div>
         </main>
     </div>
+    <script src="js/pages/myFiles.js"></script>
 </asp:Content>
 

@@ -49,17 +49,13 @@ namespace BullCoin
             }
         }
 
-       
+
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            // encuentro el botón que desencadenó el evento
             Button btn = (Button)sender;
+            HiddenField hnfId = (HiddenField)btn.NamingContainer.FindControl("hnfId");
 
-            // encuentro el control HiddenField dentro del contenedor del botón
-            HiddenField hnfId = (HiddenField)btn.FindControl("hnfId");
-
-            // accedo al valor del HiddenField
             if (hnfId != null)
             {
                 int id = int.Parse(hnfId.Value);
@@ -67,14 +63,17 @@ namespace BullCoin
                 try
                 {
                     data.DeleteCurrency(id);
+                    string script = "<script>cotizacionEliminada();</script>";
+                    ClientScript.RegisterStartupScript(this.GetType(), "cotizacionEliminada", script);
                     LoadCurrencies();
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
+                    // Manejar el error
                     throw;
                 }
             }
-
         }
+
     }
 }
