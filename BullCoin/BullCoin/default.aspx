@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Home" Language="C#" MasterPageFile="~/myMaster.Master" AutoEventWireup="true" CodeBehind="default.aspx.cs" Inherits="BullCoin._default" Async="true"  EnableEventValidation="false" %>
+﻿<%@ Page Title="BullCoin" Language="C#" MasterPageFile="~/myMaster.Master" AutoEventWireup="true" CodeBehind="default.aspx.cs" Inherits="BullCoin._default" Async="true"  EnableEventValidation="false" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="css/pages/default.css" rel="stylesheet" />

@@ -3,9 +3,20 @@ let email = document.getElementById("user_email");
 let mensaje = document.getElementById("message");
 let lblValidacion = document.getElementById("lblValidacion");
 let formulario = document.getElementById("contact-form");
+
+
 function EnviarFormulario() {
     event.preventDefault();
-    if (!ValidarFormulario()) {
+    if (ValidarFormulario()) {
+        Swal.fire({
+            title: "Correo enviado",
+            text: "El correo se envió correctamente.",
+            icon: "success",
+            confirmButtonText: "OK",
+        });
+        LimpiarFormulario();
+
+    } else {
         lblValidacion.innerText = "Debes completar todos los campos.";
         lblValidacion.style.color = "Red";
     }

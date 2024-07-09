@@ -13,23 +13,6 @@
 .informes-section {
     padding: 30px;
 }
-
-.tablero-cotizaciones {
-    border: 1px solid var(--color-forest-green);
-    border-radius: 10px;
-    padding: 20px;
-}
-
-.img-grafico-container {
-    width: 400px;
-    height: 250px;
-}
-
-    .img-grafico-container img {
-        width: 100%;
-        object-fit: cover;
-    }
-
 .selector-monedas-container {
     width: 360px;
     display: flex;
@@ -39,13 +22,20 @@
     padding: 15px;
     border: 0.5px solid rgba(179, 187, 198, 0.45);
     box-shadow: 0px 0px 10px rgba(179, 187, 198, 0.45);
+    position: relative;
+    max-width: 100%; /* Asegura que el contenedor no se salga del contenedor */
 }
-/* .selector-monedas-container select {
-    cursor: pointer;
-    font-size: 16px;
-    border: 0.5px solid rgba(179, 187, 198, 0.45);
-    box-shadow: 0px 0px 10px rgba(179, 187, 198, 0.45);
-} */
+
+    .selector-monedas-container::after {
+        content: '\25BC'; /* Flecha hacia abajo */
+        position: absolute;
+        top: 50%;
+        right: 17px;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: #999;
+    }
+
 .nombre-bandera {
     padding-left: 8px;
     padding-right: 4px;
@@ -75,139 +65,61 @@
     font-size: 18px;
     font-weight: 700;
 }
-/* esto lo dejo comentado porque despus lo vamos a usar con js */
-.selector-moneda {
-    padding-left: 12px;
-    padding: 9.5px 4px;
-    min-width: 30px;
-    opacity: 1;
-    border: 0;
-    font-size: 1rem;
-    margin-right: 5px;
-}
 
-.btn-selector-moneda {
-    border: 0;
-    cursor: pointer;
-    margin: 0;
-    display: inline-flex;
-    outline: 0;
-    padding: 0;
-    position: relative;
-    align-items: center;
-    border-radius: 0;
-    vertical-align: middle;
-    justify-content: center;
-    text-decoration: none;
-    background-color: transparent;
-    font-size: 1.5rem;
-    text-align: center;
-}
-
-.icono-selector {
+/* Reset de estilos por defecto del selector */
+select {
     width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-    .icono-selector i {
-        font-size: 1.2rem;
-    }
-
-.selector-container {
+    appearance: none;
     background-color: #fff;
-    margin-top: 10px;
-    width: 300px;
-    max-height: 200px;
-    position: absolute;
-    left: 300px;
-    border: 1px solid lightgrey;
-    border-radius: 10px;
-    padding: 10px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    overflow-y: scroll;
-    z-index: 5;
-    display: none;
-}
-
-.selector-option-container {
-    width: 90%;
-    margin: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid lightgray;
-    padding: 5px;
-    border-radius: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px 38px 10px 10px;
+    font-size: 16px;
+    color: #333;
     cursor: pointer;
-    user-select: none;
+    outline: none;
+    position: relative;
+    transition: border-color 0.3s;
 }
 
-.selector-option {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.flag-img {
-    width: 30px;
-}
-
-    .flag-img img {
-        width: 100%;
-        object-fit: cover;
+    /* Estilo del contenedor del selector */
+    select:hover,
+    select:focus {
+        border-color: #007BFF;
     }
 
-.nombre {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px 8px;
-    font-size: 18px;
-    font-weight: 700;
+    /* Añadir una flecha al selector */
+    select::after {
+        content: '\25BC'; /* Flecha hacia abajo */
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: #999;
+    }
+
+    /* Estilo de las opciones del selector */
+    select option {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+
+
+.tablero-cotizaciones {
+    border: 1px solid var(--color-forest-green);
+    border-radius: 10px;
+    padding: 20px;
+}
+.chart-container {
+    width: 80%;
+    margin: 50px auto;
 }
 
-.selector-moneda {
-    padding-left: 12px;
-    padding: 9.5px 4px;
-    min-width: 30px;
-    opacity: 1;
-    border: 0;
-    font-size: 1rem;
-    margin-right: 5px;
-}
-
-.btn-selector-moneda {
-    border: 0;
-    cursor: pointer;
-    margin: 0;
-    display: inline-flex;
-    outline: 0;
-    padding: 0;
-    position: relative;
-    align-items: center;
-    border-radius: 0;
-    vertical-align: middle;
-    justify-content: center;
-    text-decoration: none;
-    background-color: transparent;
-    font-size: 1.5rem;
+.titulo-informe {
     text-align: center;
 }
-
-.icono-selector {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-    .icono-selector i {
-        font-size: 1.2rem;
-    }
 
 .datos-moneda {
     width: 100%;
@@ -221,15 +133,6 @@
     overflow-y: scroll;
 }
 
-.titulo-informe {
-    text-align: center;
-}
-
-.chart-container {
-    width: 80%;
-    margin: 50px auto;
-}
-
 table {
     width: 100%;
     border-collapse: collapse;
@@ -238,10 +141,7 @@ table {
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-thead {
-    background-color: #007BFF;
-    color: white;
-}
+
 
 th, td {
     padding: 10px;
@@ -250,6 +150,8 @@ th, td {
 }
 
 th {
+    background-color: #007BFF;
+    color: white;
     cursor: pointer;
 }
 
@@ -257,61 +159,7 @@ th {
         background-color: #0056b3;
     }
 
-/* Estilos para el modal */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-}
 
-.modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-    max-width: 500px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.close-button {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-    .close-button:hover,
-    .close-button:focus {
-        color: #000;
-        text-decoration: none;
-        cursor: pointer;
-    }
-
-.modal-buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
-    .modal-buttons button {
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-        .modal-buttons button:hover {
-            background-color: #ddd;
-        }
 
 
 .fa-arrow-up {
@@ -340,48 +188,35 @@ th {
 
 
 @media screen and (max-width: 768px) {
-    .img-grafico-container {
-        width: 300px;
-        height: 200px;
-    }
 
-    .grafico-selector {
-        flex-wrap: wrap;
-        gap: 30px;
-    }
-
-    .selector-container {
-        left: 100px;
-    }
 }
 
-@media screen and (max-width: 530px) {
-    .fila-cotizaciones h3 {
-        font-size: 1pc;
-        font-weight: 400;
-        line-height: 1pc;
-        letter-spacing: 1px;
-    }
-
-    .fila-datos p {
-        font-size: 1pc;
-        letter-spacing: 0.5px;
-    }
-}
 
 @media screen and (max-width: 430px) {
-    .selector-monedas-container {
-        width: 250px;
-    }
+ 
 
     .selector-container {
         width: 250px;
         left: 50px;
+    }
+    select option{
+        font-size: 12px;
     }
 }
 
 @media screen and (max-width: 325px) {
     .selector-monedas-container {
         width: 230px;
+        padding: 5px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    select{
+        width: 90%;
+    }
+    .selector-monedas-container::after {
+        position: relative;
+        transform: initial;
+        right: 0;
     }
 }
