@@ -27,3 +27,12 @@ function cotizacionEliminada() {
         window.location = "myFiles.aspx";
     });
 }
+
+function userNotLoggedIn() {
+    Swal.fire({
+        title: "Error",
+        text: "Debes iniciar sesión para poder ver tus cotizaciones guardadas.",
+        icon: "info",
+        confirmButtonText: "OK",
+    });
+}

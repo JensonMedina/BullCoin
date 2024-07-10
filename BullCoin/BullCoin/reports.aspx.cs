@@ -44,7 +44,7 @@ namespace BullCoin
             CurrencyData data = new CurrencyData();
             try
             {
-                return data.ListCurrencies();
+                return data.ListCurrencies(1);
             }
             catch (Exception)
             {

@@ -16,21 +16,33 @@ namespace BullCoin
         public List<Currency> Currencies { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["idUsuario"] != null)
             {
-                //si no es postback cargo las cotizaciones guardadas en la base de datos
-                LoadCurrencies();
+                int idUsuario = (int)Session["idUsuario"];
+                if (!IsPostBack)
+                {
+                    //si no es postback cargo las cotizaciones guardadas en la base de datos
+                    LoadCurrencies(idUsuario);
+                }
             }
+            else
+            {
+                //no se ha iniciado sesión.
+                string script = "<script>userNotLoggedIn();</script>"; // Nombre de tu función JavaScript
+                ClientScript.RegisterStartupScript(this.GetType(), "userNotLoggedIn", script);
+            }
+            
+            
         }
 
-        private void LoadCurrencies()
+        private void LoadCurrencies(int idUsuario)
         {
             //instancio un objeto de tipo currencydata que voy a usar para acceder al metodo listcurrencies
             CurrencyData currencyData = new CurrencyData();
             try
             {
                 //llamo al metodo para traer las cotizaciones guardas y las guardo en la lista de currencies
-                Currencies = currencyData.ListCurrencies();
+                Currencies = currencyData.ListCurrencies(idUsuario);
                 var groupedData = Currencies
                 .GroupBy(c => c.fechaActualizacion.Date)
                 .Select(g => new
@@ -65,7 +77,7 @@ namespace BullCoin
                     data.DeleteCurrency(id);
                     string script = "<script>cotizacionEliminada();</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "cotizacionEliminada", script);
-                    LoadCurrencies();
+                    //LoadCurrencies();
                 }
                 catch (Exception ex)
                 {

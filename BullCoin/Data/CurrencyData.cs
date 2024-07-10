@@ -14,14 +14,15 @@ namespace Data
     {
         //public Currency currencies { get; set; }
 
-        public List<Currency> ListCurrencies()
+        public List<Currency> ListCurrencies(int idUsuario)
         {
             DataAccess data = new DataAccess();
             List<Currency> list = new List<Currency>();
             try
             {
-                string query = "select * from cotizacionesGuardadas order by fechaActualizacion desc";
+                string query = "select * from cotizacionesGuardadas where idUsuario = @idUsuario order by fechaActualizacion desc";
                 data.SetQuery(query);
+                data.SetParameters("@idUsuario", idUsuario);
                 data.ExecuteRead();
                 while (data.GetReader.Read())
                 {
@@ -48,16 +49,17 @@ namespace Data
             }
         }
 
-        public bool VerifyExistence(Currency currency)
+        public bool VerifyExistence(Currency currency, int idUsuario)
         {
             DataAccess data = new DataAccess();
             try
             {
-                string query = "select * from cotizacionesGuardadas where moneda = @moneda and casa = @casa and fechaActualizacion = @fechaActualizacion";
+                string query = "select * from cotizacionesGuardadas where moneda = @moneda and casa = @casa and fechaActualizacion = @fechaActualizacion and idUsuario = @idUsuario";
                 data.SetQuery(query);
                 data.SetParameters("@moneda", currency.moneda);
                 data.SetParameters("@casa", currency.casa);
                 data.SetParameters("@fechaActualizacion", ExtractDateWithoutTime(currency.fechaActualizacion));
+                data.SetParameters("@idUsuario", idUsuario);
                 data.ExecuteRead();
 
                 if (data.GetReader.Read())
@@ -87,7 +89,7 @@ namespace Data
 
             return DateTime.Parse(dateOnly).Date;
         }
-        public void SaveCurrency(Currency newCurrency)
+        public void SaveCurrency(Currency newCurrency, int idUsuario)
         {
             DataAccess data = new DataAccess();
             try
@@ -100,7 +102,7 @@ namespace Data
                 data.SetParameters("@venta", newCurrency.venta);
                 data.SetParameters("@fechaActualizacion", ExtractDateWithoutTime(newCurrency.fechaActualizacion));
                 data.SetParameters("@bandera", newCurrency.bandera);
-
+                data.SetParameters("@idUsuario", idUsuario);
                 data.ExecuteAction();
             }
             catch (Exception)

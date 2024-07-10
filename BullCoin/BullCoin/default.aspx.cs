@@ -13,6 +13,7 @@ namespace BullCoin
         public List<Currency> ListCurrencies { get; set; }
         public int selectedCoin { get; set; }
         private CurrenciesController currenciesController;
+        private int IdUsuario = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             currenciesController = new CurrenciesController();
@@ -20,7 +21,7 @@ namespace BullCoin
             {
                 GetCurrencies();
                 flagImg.ImageUrl = "img/noun-world-2699516.svg";
-
+                
             }
             else
             {
@@ -29,6 +30,10 @@ namespace BullCoin
                 {
                     GetCurrencies();
                 }
+            }
+            if (Session["idUsuario"] != null)
+            {
+                IdUsuario = (int)Session["idUsuario"];
             }
 
 
@@ -90,44 +95,50 @@ namespace BullCoin
 
         protected void btnGuardarFavorito_Click(object sender, EventArgs e)
         {
-            Button clickedButton = (Button)sender;
-            int selectedIndex = int.Parse(clickedButton.CommandArgument);
-            Currency selectedCurrency = ListCurrencies[selectedIndex];
-            selectedCurrency.bandera = GetFlagImage(selectedCurrency.moneda);
-            if(!VerifyExistence(selectedCurrency))
+            if(IdUsuario != 0)
             {
-                SaveFavorites(selectedCurrency);
-                // Llama a una función JavaScript después de guardar la moneda
-                string script = "<script>showSuccessAlert();</script>"; // Nombre de tu función JavaScript
-                ClientScript.RegisterStartupScript(this.GetType(), "showSuccessAlert", script);
+                Button clickedButton = (Button)sender;
+                int selectedIndex = int.Parse(clickedButton.CommandArgument);
+                Currency selectedCurrency = ListCurrencies[selectedIndex];
+                selectedCurrency.bandera = GetFlagImage(selectedCurrency.moneda);
+                if (!VerifyExistence(selectedCurrency, IdUsuario))
+                {
+                    SaveFavorites(selectedCurrency, IdUsuario);
+                    // Llama a una función JavaScript después de guardar la moneda
+                    string script = "<script>showSuccessAlert();</script>"; // Nombre de tu función JavaScript
+                    ClientScript.RegisterStartupScript(this.GetType(), "showSuccessAlert", script);
+                }
+                else
+                {
+                    string script = "<script>showErrorAlert();</script>"; // Nombre de tu función JavaScript
+                    ClientScript.RegisterStartupScript(this.GetType(), "showErrorAlert", script);
+                }
             }
             else
             {
-                string script = "<script>showErrorAlert();</script>"; // Nombre de tu función JavaScript
-                ClientScript.RegisterStartupScript(this.GetType(), "showErrorAlert", script);
-            }
-            
-            
+                string script = "<script>userNotLoggedIn();</script>"; // Nombre de tu función JavaScript
+                ClientScript.RegisterStartupScript(this.GetType(), "userNotLoggedIn", script);
 
+            }
         }
-        private void SaveFavorites(Currency selected)
+        private void SaveFavorites(Currency selected, int idUsuario)
         {
             CurrencyData data = new CurrencyData();
             try
             {
-                data.SaveCurrency(selected);
+                data.SaveCurrency(selected, idUsuario);
             }
             catch (Exception)
             {
                 throw;
             }
         }
-        private bool VerifyExistence(Currency currency)
+        private bool VerifyExistence(Currency currency, int idUsuario)
         {
             CurrencyData data = new CurrencyData();
             try
             {
-                if(data.VerifyExistence(currency))
+                if (data.VerifyExistence(currency, idUsuario))
                 {
                     //ya existe la moneda
                     return true;

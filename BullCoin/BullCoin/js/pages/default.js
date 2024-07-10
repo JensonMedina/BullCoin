@@ -59,3 +59,12 @@ function showErrorAlert() {
         confirmButtonText: "OK",
     });
 }
+
+function userNotLoggedIn() {
+    Swal.fire({
+        title: "Error",
+        text: "Debes iniciar sesión para poder guardar esta cotización.",
+        icon: "info",
+        confirmButtonText: "OK",
+    });
+}

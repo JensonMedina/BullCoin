@@ -8,10 +8,9 @@
     <link href="css/common.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link
-      rel="shortcut icon"
-      href="img/bullCoinIcono.jpg"
-      type="image/x-icon"
-    />
+        rel="shortcut icon"
+        href="img/bullCoinIcono.jpg"
+        type="image/x-icon" />
     <title></title>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
@@ -28,16 +27,22 @@
                 </div>
                 <ul>
                     <li>
-                        <a href="default.aspx"><i class="fa-solid fa-house"></i>Inicio</a>
+                        <a href="default.aspx">Inicio</a>
                     </li>
                     <li>
-                        <a href="myFiles.aspx"><i class="fa-solid fa-folder-open"></i>Mi Archivo</a>
+                        <a href="myFiles.aspx">Mi Archivo</a>
                     </li>
                     <li>
-                        <a href="reports.aspx"><i class="fa-solid fa-file"></i>Informes</a>
+                        <a href="reports.aspx">Informes</a>
                     </li>
                     <li>
-                        <a href="contact.aspx"><i class="fa-solid fa-address-book"></i>Contáctenos</a>
+                        <a href="contact.aspx">Contáctenos</a>
+                    </li>
+                    <li>
+                        <a href="login.aspx">Inicia sesión</a>
+                    </li>
+                    <li>
+                        <a href="register.aspx">Regístrate</a>
                     </li>
                 </ul>
             </div>

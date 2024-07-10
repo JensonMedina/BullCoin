@@ -83,6 +83,7 @@
     <Content Include="css\pages\contact.css" />
     <Content Include="css\pages\default.css" />
     <Content Include="css\pages\myFiles.css" />
+    <Content Include="css\pages\register.css" />
     <Content Include="css\pages\reports.css" />
     <Content Include="default.aspx" />
     <Content Include="Global.asax" />
@@ -119,8 +120,11 @@
     <Content Include="js\pages\contact.js" />
     <Content Include="js\pages\default.js" />
     <Content Include="js\pages\myFiles.js" />
+    <Content Include="js\pages\register.js" />
     <Content Include="js\pages\reports.js" />
+    <Content Include="login.aspx" />
     <Content Include="myFiles.aspx" />
+    <Content Include="Register.aspx" />
     <Content Include="reports.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -143,6 +147,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="myFiles.aspx.cs">
       <DependentUpon>myFiles.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -158,6 +169,13 @@
       <DependentUpon>myMaster.Master</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
     <Compile Include="reports.aspx.cs">
       <DependentUpon>reports.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
