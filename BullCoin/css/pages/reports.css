@@ -1,0 +1,222 @@
+﻿.aviso {
+    color: #333; /* Color del texto */
+    font-size: 2.5rem; /* Tamaño del texto */
+    font-weight: bold; /* Negrita */
+    text-align: center; /* Centrado del texto */
+    padding: 20px; /* Espacio alrededor del texto */
+    border: 2px solid #333; /* Borde alrededor del texto */
+    border-radius: 10px; /* Esquinas redondeadas */
+    background-color: #fff; /* Fondo blanco para el texto */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil para el texto */
+}
+
+.informes-section {
+    padding: 30px;
+}
+.selector-monedas-container {
+    width: 360px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 4px;
+    padding: 15px;
+    border: 0.5px solid rgba(179, 187, 198, 0.45);
+    box-shadow: 0px 0px 10px rgba(179, 187, 198, 0.45);
+    position: relative;
+    max-width: 100%; /* Asegura que el contenedor no se salga del contenedor */
+}
+
+    .selector-monedas-container::after {
+        content: '\25BC'; /* Flecha hacia abajo */
+        position: absolute;
+        top: 50%;
+        right: 17px;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: #999;
+    }
+
+.nombre-bandera {
+    padding-left: 8px;
+    padding-right: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.flag {
+    width: 35px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .flag img {
+        width: 100%;
+        object-fit: cover;
+    }
+
+.nombre {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px 8px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+/* Reset de estilos por defecto del selector */
+select {
+    width: 100%;
+    appearance: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px 38px 10px 10px;
+    font-size: 16px;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    transition: border-color 0.3s;
+}
+
+    /* Estilo del contenedor del selector */
+    select:hover,
+    select:focus {
+        border-color: #007BFF;
+    }
+
+    /* Añadir una flecha al selector */
+    select::after {
+        content: '\25BC'; /* Flecha hacia abajo */
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        pointer-events: none;
+        color: #999;
+    }
+
+    /* Estilo de las opciones del selector */
+    select option {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+
+
+.tablero-cotizaciones {
+    border: 1px solid var(--color-forest-green);
+    border-radius: 10px;
+    padding: 20px;
+}
+.chart-container {
+    width: 80%;
+    margin: 50px auto;
+}
+
+.titulo-informe {
+    text-align: center;
+}
+
+.datos-moneda {
+    width: 100%;
+}
+
+.tabla-cotizaciones {
+    width: 100%;
+    overflow-x: auto;
+    margin: auto;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    margin: auto;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+    th:hover {
+        background-color: #0056b3;
+    }
+
+
+
+
+.fa-arrow-up {
+    color: green;
+}
+
+.fa-arrow-down {
+    color: red;
+}
+
+.bread-crumb-item-active::before {
+    content: ">";
+    padding: 0 8px;
+    color: #000;
+}
+
+#link-compartir-info {
+    padding: 5px;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 5px;
+    background-color: var(--color-interactive-primary);
+}
+
+
+@media screen and (max-width: 768px) {
+
+}
+
+
+@media screen and (max-width: 430px) {
+ 
+
+    .selector-container {
+        width: 250px;
+        left: 50px;
+    }
+    select option{
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 325px) {
+    .selector-monedas-container {
+        width: 230px;
+        padding: 5px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    select{
+        width: 90%;
+    }
+    .selector-monedas-container::after {
+        position: relative;
+        transform: initial;
+        right: 0;
+    }
+}

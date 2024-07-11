@@ -1,0 +1,139 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="myMaster.master.cs" Inherits="BullCoin.myMaster" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/common.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link
+        rel="shortcut icon"
+        href="img/bullCoinIcono.jpg"
+        type="image/x-icon" />
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <header>
+            <div id="menu">
+                <div class="icono-container">
+                    <a href="default.aspx">
+                        <img src="img/bullCoinIcono.jpg" alt="" /></a>
+                    <h2>BullCoin</h2>
+                </div>
+                <ul>
+                    <li>
+                        <a href="default.aspx">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="myFiles.aspx">Mi Archivo</a>
+                    </li>
+                    <li>
+                        <a href="reports.aspx">Informes</a>
+                    </li>
+                    <li>
+                        <a href="contact.aspx">Contáctenos</a>
+                    </li>
+                    <%if (Session["idUsuario"] != null)
+                        {
+
+
+                    %>
+                    <li>
+                        <asp:Button ID="idCerrarSesión" runat="server" Text="Cerrar sesión" OnClick="idCerrarSesión_Click" />
+                    </li>
+                    <%
+                    }
+                    else
+                    {
+                    %>
+                    <li>
+                        <a href="login.aspx">Inicia sesión</a>
+                    </li>
+                    <li>
+                        <a href="register.aspx">Regístrate</a>
+                    </li>
+                    <%
+                        } %>
+                </ul>
+            </div>
+            <button class="btn-mnu" onclick="eventoMenu()" id="btnMnu">≡</button>
+        </header>
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+        <footer>
+            <div class="footer-container">
+                <div class="institucional-container item-footer">
+                    <h3>INSTITUCIONAL</h3>
+                    <ul class="lista-institucional">
+                        <li class="lista-institucional-item">
+                            <a href="#">¿Quiénes Somos?</a>
+                        </li>
+                        <li class="lista-institucional-item">
+                            <a href="#">Socios Estratégicos</a>
+                        </li>
+                        <li class="lista-institucional-item">
+                            <a href="#">Trabaje con Nosotros</a>
+                        </li>
+                        <li class="lista-institucional-item"><a href="#">Ayuda</a></li>
+                    </ul>
+                </div>
+                <div class="accesos-container item-footer">
+                    <h3>ACCESOS</h3>
+                    <ul class="lista-accesos">
+                        <li class="lista-accesos-item"><a href="default.aspx">Inicio</a></li>
+                        <li class="lista-accesos-item">
+                            <a href="myFiles.aspx">Mi Archivo</a>
+                        </li>
+                        <li class="lista-accesos-item">
+                            <a href="reports.aspx">Informes</a>
+                        </li>
+                        <li class="lista-accesos-item">
+                            <a href="contact.aspx">Contáctenos</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="contacto-container item-footer">
+                    <h3>CONTACTO</h3>
+                    <ul class="lista-contacto">
+                        <li class="lista-contacto-item">Universidad Tecnológica Nacional
+                        </li>
+                        <li class="lista-contacto-item">ZEBALLOS 1341 - S2000BQA - ROSARIO
+                        </li>
+                        <li class="lista-contacto-item">0341 - 4481871</li>
+                        <li class="lista-contacto-item">
+                            <a href="contact.aspx">!Escríbanos!</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="desarrollado-container item-footer">
+                    <h3>DESARROLLADO POR</h3>
+                    <ul class="lista-desarrollo">
+                        <li class="lista-desarrollo-item">
+                            <a href="https://github.com/JensonMedina" target="_blank">Jenson Medina (53338)</a>
+                        </li>
+                        <li class="lista-desarrollo-item">
+                            <a href="https://github.com/MateoRegis" target="_blank">Mateo Regis (48963)</a>
+                        </li>
+                        <li class="lista-desarrollo-item">
+                            <a href="https://github.com/BrunoRubini" target="_blank">Bruno Rubini(53367)</a>
+                        </li>
+                        <li class="lista-desarrollo-item">TUP06 - 2024</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="nombre-materia">
+                <span>Tup - Cátedra de Laboratorio de Computación 2 - Año 2024</span>
+            </div>
+        </footer>
+
+        <script src="js/common.js"></script>
+
+    </form>
+</body>
+</html>
