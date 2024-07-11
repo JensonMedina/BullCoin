@@ -27,6 +27,12 @@ BullCoin es un sitio web que ofrece acceso a cotizaciones de divisas en tiempo r
 #### 4. Página de Contacto
 - **Comunicación Directa:** Permite a los usuarios enviar mensajes directamente a los desarrolladores de BullCoin para hacer comentarios o solicitar soporte.
 
+#### 5. Página de Login
+- **Formulario de inicio de sesión:** Permite a los usuarios con una cuenta registrada en BullCoin iniciar sesión, lo cual habilita el uso de guardar cotizaciones en mis archivos, eliminar cotizaciones de mis archivos y acceder a la página de informes.
+
+#### 6. Página de Registro
+- **Formulario de registro:** Permite a usuarios crear una cuenta en BullCoin.
+
 ## Contacto
 Para más información o asistencia, no dudes en utilizar la página de contacto para comunicarte directamente con nuestro equipo de soporte técnico.
 
