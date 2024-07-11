@@ -238,7 +238,7 @@ textarea {
         flex-direction: column;
     }
 
-    input {
+    input:not([type="submit"]) {
         width: 150px;
     }
 

@@ -99,3 +99,9 @@ input {
         background-color: #87d050;
         border: none;
     }
+
+@media screen and (max-width: 425px){
+    .container{
+        width: 100%;
+    }
+}
