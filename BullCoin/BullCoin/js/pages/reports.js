@@ -145,3 +145,21 @@ function getRandomColor() {
     }
     return color;
 }
+
+
+function userNotLoggedIn() {
+    Swal.fire({
+        title: "Error",
+        text: "Debes iniciar sesión para poder ver un informe de tus cotizaciones guardadas.",
+        icon: "info",
+        confirmButtonText: "OK",
+    });
+}
+
+function noCurrenciesSaved() {
+    Swal.fire({
+        title: "Informes",
+        text: "No hay cotizaciones guardadas.",
+        icon: "info",
+    });
+}

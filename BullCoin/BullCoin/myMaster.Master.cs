@@ -13,5 +13,11 @@ namespace BullCoin
         {
 
         }
+
+        protected void idCerrarSesión_Click(object sender, EventArgs e)
+        {
+            Session.Remove("idUsuario");
+            Response.Redirect("default.aspx", false);
+        }
     }
 }

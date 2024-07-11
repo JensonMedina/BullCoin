@@ -12,7 +12,10 @@ namespace BullCoin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["idUsuario"] != null)
+            {
+                Response.Redirect("default.aspx", false);
+            }
         }
 
         protected void btnEnviar_Click(object sender, EventArgs e)
@@ -29,6 +32,10 @@ namespace BullCoin
                     Session.Add("idUsuario", id);
                     Response.Redirect("default.aspx", false);
                 }
+                else
+                {
+                    lblMsg.Text = "Datos incorrectos.";
+                }
             }
             catch (Exception)
             {
@@ -44,6 +51,11 @@ namespace BullCoin
             }
             return true;
 
+        }
+
+        protected void btnClose_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("default.aspx", false);
         }
     }
 }

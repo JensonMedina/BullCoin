@@ -74,10 +74,7 @@ header {
     align-items: center;
 }
 
-    #menu a:hover {
-        color: var(--color-content-link-hover);
-        border-color: var(--color-content-link-hover);
-    }
+    
 
     #menu img {
         width: 100%;
@@ -87,19 +84,32 @@ header {
     /* Menu */
     #menu ul {
         display: flex;
+        align-items: center;
         list-style: none;
         gap: 50px;
     }
 
-        #menu ul a {
+        #menu ul a,
+        #menu ul input {
             padding: 10px 0px;
             font-size: 20px;
             font-weight: 300;
             color: var(--color-white);
             cursor: pointer;
+            border: none;
             border-bottom: 1px solid transparent;
             transition: 0.25s;
+            background-color: transparent;
+            line-height: 1.5; /* Ajusta según sea necesario */
+            vertical-align: middle;
         }
+
+    #menu a:hover,
+    #menu input:hover {
+        color: var(--color-content-link-hover);
+        border-color: var(--color-content-link-hover);
+    }
+
 
 _______________________________________________________________________________________________
 ul {

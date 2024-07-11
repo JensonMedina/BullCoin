@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -13,18 +14,55 @@ namespace BullCoin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["idUsuario"] != null)
+            {
+                Response.Redirect("default.aspx", false);
+            }
         }
 
         private bool ValidateForm()
         {
-            if (string.IsNullOrEmpty(email.Text) || string.IsNullOrEmpty(password.Text))
+            UserData userData = new UserData();
+            try
             {
-                lblMsg.Text = "Debes completar todos los campos.";
-                return false;
+                if (string.IsNullOrEmpty(email.Text) || string.IsNullOrEmpty(password.Text))
+                {
+                    lblMsg.Text = "Debes completar todos los campos.";
+                    return false;
+                }
+                if(userData.Login(email.Text, password.Text) != 0)
+                {
+                    lblMsg.Text = "Ya existe una cuenta registrada con este correo.";
+                    return false;
+                }
+                if(password.Text != confirmarPassword.Text)
+                {
+                    lblMsg.Text = "No coincide la contraseña.";
+                    return false;
+                }
+                if (!IsValidEmail(email.Text))
+                {
+                    lblMsg.Text = ("El email no es válido.");
+                    return false;
+                }
+                if(password.Text.Length < 6) {
+                    lblMsg.Text = ("Contraseña demasiado corta.");
+                    return false;
+                }
+                return true;
             }
-            return true;
+            catch (Exception)
+            {
 
+                throw;
+            }
+            
+
+        }
+        static bool IsValidEmail(string email)
+        {
+            string pattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+            return Regex.IsMatch(email, pattern);
         }
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
@@ -46,6 +84,11 @@ namespace BullCoin
 
                 throw;
             }
+        }
+
+        protected void btnClose_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("default.aspx", false);
         }
     }
 }

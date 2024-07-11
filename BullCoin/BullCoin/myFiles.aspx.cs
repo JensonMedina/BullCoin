@@ -43,7 +43,9 @@ namespace BullCoin
             {
                 //llamo al metodo para traer las cotizaciones guardas y las guardo en la lista de currencies
                 Currencies = currencyData.ListCurrencies(idUsuario);
-                var groupedData = Currencies
+                if(Currencies.Count > 0)
+                {
+                    var groupedData = Currencies
                 .GroupBy(c => c.fechaActualizacion.Date)
                 .Select(g => new
                 {
@@ -51,8 +53,15 @@ namespace BullCoin
                     Currencies = g.ToList()
                 })
                 .ToList();
-                rptFechas.DataSource = groupedData;
-                rptFechas.DataBind();
+                    rptFechas.DataSource = groupedData;
+                    rptFechas.DataBind();
+                }
+                else
+                {
+                    string script = "<script>noCurrenciesSaved();</script>";
+                    ClientScript.RegisterStartupScript(this.GetType(), "noCurrenciesSaved", script);
+                }
+                
             }
             catch (Exception)
             {
@@ -71,13 +80,14 @@ namespace BullCoin
             if (hnfId != null)
             {
                 int id = int.Parse(hnfId.Value);
+                int idUsuario = (int)Session["idUsuario"];
                 CurrencyData data = new CurrencyData();
                 try
                 {
-                    data.DeleteCurrency(id);
+                    data.DeleteCurrency(id, idUsuario);
                     string script = "<script>cotizacionEliminada();</script>";
                     ClientScript.RegisterStartupScript(this.GetType(), "cotizacionEliminada", script);
-                    //LoadCurrencies();
+                    LoadCurrencies(idUsuario);
                 }
                 catch (Exception ex)
                 {

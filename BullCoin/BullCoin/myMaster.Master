@@ -38,12 +38,27 @@
                     <li>
                         <a href="contact.aspx">Contáctenos</a>
                     </li>
+                    <%if (Session["idUsuario"] != null)
+                        {
+
+
+                    %>
+                    <li>
+                        <asp:Button ID="idCerrarSesión" runat="server" Text="Cerrar sesión" OnClick="idCerrarSesión_Click" />
+                    </li>
+                    <%
+                    }
+                    else
+                    {
+                    %>
                     <li>
                         <a href="login.aspx">Inicia sesión</a>
                     </li>
                     <li>
                         <a href="register.aspx">Regístrate</a>
                     </li>
+                    <%
+                        } %>
                 </ul>
             </div>
             <button class="btn-mnu" onclick="eventoMenu()" id="btnMnu">≡</button>

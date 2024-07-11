@@ -29,6 +29,9 @@
                     </nav>
                 </section>
                 <!-- Seccion informes -->
+                <%if (Session["idUsuario"] != null)
+                    {%>
+
                 <section class="informes-section">
                     <div class="tablero-cotizaciones">
                         <div class="selector-monedas-container">
@@ -92,6 +95,7 @@
                         </div>
                     </div>
                 </section>
+                <% } %>
             </div>
         </main>
     </div>

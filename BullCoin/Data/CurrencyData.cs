@@ -116,14 +116,15 @@ namespace Data
 
         }
 
-        public void DeleteCurrency(int Id)
+        public void DeleteCurrency(int Id, int idUsuario)
         {
             DataAccess data = new DataAccess();
             try
             {
-                string query = "delete from cotizacionesGuardadas where id = @id";
+                string query = "delete from cotizacionesGuardadas where id = @id and idUsuario = @idUsuario";
                 data.SetQuery(query);
                 data.SetParameters("@id", Id);
+                data.SetParameters("@idUsuario", idUsuario);
                 data.ExecuteAction();
 
             }

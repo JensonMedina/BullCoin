@@ -7,9 +7,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link
-    rel="shortcut icon"
-    href="img/bullCoinIcono.jpg"
-    type="image/x-icon" />
+        rel="shortcut icon"
+        href="img/bullCoinIcono.jpg"
+        type="image/x-icon" />
     <title>Registro BullCoin</title>
     <link rel="stylesheet" href="css/pages/register.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -18,7 +18,8 @@
     <form id="form1" runat="server">
         <div class="navbar">
             <img src="img/bullCoinIcono.jpg" alt="Logo BullCoin" class="logo">
-            <button class="close-btn" onclick="window.location.href='default.aspx'">x</button>
+            <asp:Button ID="btnClose" CssClass="close-btn" runat="server" Text="x" OnClick="btnClose_Click" />
+            <%--<button class="close-btn" onclick="window.location.href='default.aspx'">x</button>--%>
         </div>
         <div class="container">
 
@@ -29,6 +30,8 @@
                 <asp:TextBox ID="email" TextMode="Email" runat="server"></asp:TextBox>
                 <label for="password">Contraseña:</label>
                 <asp:TextBox ID="password" TextMode="Password" runat="server"></asp:TextBox>
+                <label for="confirmarPassword">Confirmar Contraseña:</label>
+                <asp:TextBox ID="confirmarPassword" TextMode="Password" runat="server"></asp:TextBox>
                 <asp:Label ID="lblMsg" runat="server" Text=""></asp:Label>
                 <asp:Button ID="btnRegistrar" CssClass="register-btn" runat="server" Text="Registrar" OnClick="btnRegistrar_Click" />
             </div>

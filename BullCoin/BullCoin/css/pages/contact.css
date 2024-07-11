@@ -1,5 +1,5 @@
 ﻿/* esto va en una hoja de css llamada contacto.css */
-input {
+input:not([type="submit"]) {
     width: 200px;
     height: 30px;
     outline: none;

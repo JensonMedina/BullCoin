@@ -14,24 +14,44 @@ namespace BullCoin
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            if (Session["idUsuario"] != null)
             {
-                loadGridView();
-                flagImg.ImageUrl = "img/noun-world-2699516.svg";
-                string script = $"<script>showGraph({0});</script>";
-                ClientScript.RegisterStartupScript(this.GetType(), "showGraph", script, false);
+                int idUsuario = (int)Session["idUsuario"];
+                if (!IsPostBack)
+                {
+                    loadGridView(idUsuario);
+                    flagImg.ImageUrl = "img/noun-world-2699516.svg";
+                    string script = $"<script>showGraph({0});</script>";
+                    ClientScript.RegisterStartupScript(this.GetType(), "showGraph", script, false);
+                }
             }
+            else
+            {
+                //no se ha iniciado sesión.
+                string script = "<script>userNotLoggedIn();</script>"; // Nombre de tu función JavaScript
+                ClientScript.RegisterStartupScript(this.GetType(), "userNotLoggedIn", script);
+            }
+            
         }
-        private void loadGridView()
+        private void loadGridView(int idUsuario)
         {
             try
             {
-                List<Currency> currencies = loadCurrencies();
-                currencies = currencies.OrderByDescending(a => a.fechaActualizacion).ToList();
-                gvCotizaciones.DataSource = currencies;
-                gvCotizaciones.DataBind();
-                JavaScriptSerializer serializer = new JavaScriptSerializer();
-                hfData.Value = serializer.Serialize(currencies);
+                List<Currency> currencies = loadCurrencies(idUsuario);
+                if(currencies.Count > 0)
+                {
+                    currencies = currencies.OrderByDescending(a => a.fechaActualizacion).ToList();
+                    gvCotizaciones.DataSource = currencies;
+                    gvCotizaciones.DataBind();
+                    JavaScriptSerializer serializer = new JavaScriptSerializer();
+                    hfData.Value = serializer.Serialize(currencies);
+                }
+                else
+                {
+                    string script = "<script>noCurrenciesSaved();</script>"; // Nombre de tu función JavaScript
+                    ClientScript.RegisterStartupScript(this.GetType(), "noCurrenciesSaved", script);
+                }
+                
             }
             catch (Exception)
             {
@@ -39,12 +59,12 @@ namespace BullCoin
                 throw;
             }
         }
-        private List<Currency> loadCurrencies()
+        private List<Currency> loadCurrencies(int idUsuario)
         {
             CurrencyData data = new CurrencyData();
             try
             {
-                return data.ListCurrencies(1);
+                return data.ListCurrencies(idUsuario);
             }
             catch (Exception)
             {
@@ -61,7 +81,8 @@ namespace BullCoin
 
                 if (lblVariacion != null)
                 {
-                    List<Currency> currencies = loadCurrencies();
+                    int idUsuario = (int)Session["idUsuario"];
+                    List<Currency> currencies = loadCurrencies(idUsuario);
                     List<Currency> previousData = currencies.Where(item => item.moneda == actualCurrency.moneda && item.casa == actualCurrency.casa && item.fechaActualizacion < actualCurrency.fechaActualizacion).ToList();
 
                     if (previousData.Count > 0)
@@ -94,7 +115,8 @@ namespace BullCoin
         {
             try
             {
-                List<Currency> currencies = loadCurrencies();
+                int idUsuario = (int)Session["idUsuario"];
+                List<Currency> currencies = loadCurrencies(idUsuario);
                 JavaScriptSerializer serializer = new JavaScriptSerializer();
                 int selectedValue = int.Parse(selectorMoneda.SelectedValue);
 

@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="page-container">
-        <main>
+        <main style="min-height: 100vh;">
             <div class="main">
                 <section class="img-background-section">
                     <div class="img-background" id="BackgroundDinamico">

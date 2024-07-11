@@ -16,9 +16,6 @@ function EnviarFormulario() {
         });
         LimpiarFormulario();
 
-    } else {
-        lblValidacion.innerText = "Debes completar todos los campos.";
-        lblValidacion.style.color = "Red";
     }
 }
 function LimpiarFormulario() {
@@ -28,15 +25,24 @@ function LimpiarFormulario() {
     lblValidacion.style.display = "none";
 }
 function ValidarFormulario() {
+    let patron = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     if (
-        nombre.value.trim() != "" &&
-        email.value.trim() != "" &&
-        mensaje.value.trim() != ""
+        nombre.value.trim() == "" ||
+        email.value.trim() == "" ||
+        mensaje.value.trim() == ""
     ) {
-        return true;
+        lblValidacion.innerText = "Debes completar todos los campos.";
+        lblValidacion.style.color = "Red";
+        lblValidacion.style.display = "block";
+        return false;
     }
-    lblValidacion.style.display = "block";
-    return false;
+    if (!patron.test(email.value.trim())) {
+        lblValidacion.innerText = "Email no válido.";
+        lblValidacion.style.color = "Red";
+        lblValidacion.style.display = "block";
+        return false;
+    }
+    return true;
 }
 
 //window.onload = function () {

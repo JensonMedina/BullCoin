@@ -17,7 +17,7 @@
     <form id="form1" runat="server">
     <div class="navbar">
         <img src="img/bullCoinIcono.jpg" alt="Logo BullCoin" class="logo">
-        <button class="close-btn" onclick="window.location.href='default.aspx'">x</button>
+        <asp:Button ID="btnClose" CssClass="close-btn" runat="server" Text="x" OnClick="btnClose_Click" />
     </div>
     <div class="container">
 

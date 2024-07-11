@@ -36,3 +36,11 @@ function userNotLoggedIn() {
         confirmButtonText: "OK",
     });
 }
+
+function noCurrenciesSaved() {
+    Swal.fire({
+        title: "Favoritos",
+        text: "No hay cotizaciones guardadas.",
+        icon: "info",
+    });
+}
