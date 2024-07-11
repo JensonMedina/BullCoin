@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace Data
 {
@@ -28,7 +29,8 @@ namespace Data
         public DataAccess()
         {
             // inicializo la conexión sql con la cadena de conexión de la base de datos
-            Connection = new SqlConnection("Server=.\\SQLEXPRESS01; database=BullCoin; integrated security=true");
+            //Connection = new SqlConnection("Server=.\\SQLEXPRESS01; Database=BullCoin; Integrated Security=true");
+            Connection = new SqlConnection(ConfigurationManager.AppSettings["cadenaConexion"]);
 
             // inicializo el comando SQL
             Command = new SqlCommand();
